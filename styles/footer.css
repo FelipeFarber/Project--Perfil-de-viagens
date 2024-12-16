@@ -6,7 +6,23 @@ footer {
   font: 14px/150% var(--font-family);
 
 }
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+  @media (width >= 80em) {
+    footer {
+        padding-block: 1.5rem;
+    }
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
 footer span:nth-child(1) {
 margin-right: auto ;
+
+
 
 }
