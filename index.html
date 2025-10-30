@@ -7,19 +7,337 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travelgram | Perfil de viagens</title>
-    <link rel="stylesheet" href="styles/index.css" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Estilos CSS combinados e corrigidos -->
+    <style>
+      /* --- Início: global.css --- */
+      * {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --brand-color: #ef5f4c;
+        --background-color: #ffffff;
+        --surface-color: #f5f5f5;
+        --skeleton-color: #d9d9d9;
+        --shape-transparency: #ffffff8f;
+        --text-color-primary: #313131;
+        --text-color-secondary: #6c6c6c;
+
+        --ff-sans: "Poppins", system-ui, sans-serif;
+
+        --fw-base: 400;
+        --fw-bold: 700;
+
+        --fs-md: 0.875rem;
+        --fs-base: 1rem;
+        --fs-lg: 1.5rem;
+
+        --px-base: 1rem;
+
+        --py-base: 1rem;
+        --py-lg: 1.5rem;
+        --py-xl: 2rem;
+      }
+
+      html {
+        font-family: var(--ff-sans);
+        font-weight: var(--fw-base);
+        font-size: var(--fs-md);
+        line-height: 1.7;
+        color: var(--text-color-secondary);
+      }
+
+      body {
+        background-color: var(--background-color);
+      }
+
+      h1 {
+        font-size: var(--fs-lg);
+        line-height: 1.25;
+        color: var(--text-color-primary);
+        font-weight: var(--fw-bold);
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s ease; /* ADICIONADO */
+      }
+
+      a:hover {
+        color: var(--brand-color);
+        text-decoration: underline;
+      }
+
+      svg path { /* ADICIONADO */
+        transition: fill 0.3s ease;
+      }
+
+      svg path:hover {
+        fill: var(--brand-color);
+      }
+
+      ul[role="list"] {
+        list-style: none;
+      }
+
+      @media (width >= 80em) {
+        :root {
+          --fs-lg: 2rem;
+
+          --px-base: 2rem;
+
+          --py-base: 1.25rem;
+          --py-lg: 1.5rem;
+        }
+      }
+      /* --- Fim: global.css --- */
+
+      /* --- Início: nav.css --- */
+      nav {
+        justify-content: space-between;
+        align-items: center;
+        line-height: 0;
+      }
+
+      #logo { /* ADICIONADO */
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      #logo:hover { /* ADICIONADO */
+        transform: scale(1.05);
+      }
+
+      nav ul {
+        align-items: center;
+        gap: 1rem;
+        font-size: 16px;
+      }
+
+      nav ul li {
+        padding: 4px;
+      }
+
+      nav ul li:last-child img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%; /* Bônus: Garantir que a imagem seja redonda */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+      }
+
+      /* ADICIONADO HOVER */
+      nav ul li:last-child img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      /* --- Fim: nav.css --- */
+
+      /* --- Início: header.css --- */
+      header .container {
+        display: grid;
+        gap: 2rem;
+      }
+
+      #profile img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+      }
+
+      /* ADICIONADO HOVER */
+      #profile img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      #profile > div {
+        max-width: 296px;
+      }
+
+      #info {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      #info li {
+        display: flex;
+        gap: 0.5rem;
+        transition: transform 0.3s ease; /* ADICIONADO */
+      }
+
+      /* ADICIONADO HOVER */
+      #info li:hover {
+        transform: translateX(5px);
+      }
+
+      @media (width >= 80em) {
+        header .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        #profile {
+          display: flex;
+          gap: 2rem;
+        }
+
+        #profile > div {
+          max-width: 384px;
+        }
+
+        #profile img {
+          width: 176px;
+          height: 176px;
+          object-fit: cover;
+          border-radius: 50%;
+          margin-bottom: 0;
+        }
+
+        #info {
+          width: 280px;
+        }
+      }
+      /* --- Fim: header.css --- */
+
+      /* --- Início: main.css --- */
+      main {
+        display: grid;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-block: 1rem;
+        justify-content: center;
+      }
+
+      main img {
+        width: 328px;
+        height: 328px;
+        object-fit: cover;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* ADICIONADO */
+        position: relative; /* ADICIONADO para z-index funcionar */
+      }
+
+      /* ADICIONADO HOVER */
+      main img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 10; /* Para a sombra aparecer sobre as outras imagens */
+      }
+
+      @media (width >= 80em) {
+        main {
+          display: grid;
+          grid-template-columns: repeat(4, 286px);
+          gap: 1.5rem;
+          padding-block: 1.5rem;
+        }
+
+        main img {
+          width: 286px;
+          height: 286px;
+          object-fit: cover;
+        }
+      }
+      /* --- Fim: main.css --- */
+
+      /* --- Início: footer.css --- */
+      footer {
+        padding-block: 1rem;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1rem;
+      }
+      @media (width >= 80em) {
+        footer {
+          padding-block: 1.5rem;
+        }
+        .footer-content {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+      footer span:nth-child(1) {
+        margin-right: auto;
+      }
+      /* --- Fim: footer.css --- */
+
+      /* --- Início: utility.css --- */
+      .px-base {
+        padding-inline: var(--px-base);
+      }
+
+      .py-base {
+        padding-block: var(--py-base);
+      }
+
+      .py-lg {
+        padding-block: var(--py-lg);
+      }
+
+      .py-xl {
+        padding-block: var(--py-xl);
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .container {
+        --max-width: 360px;
+        width: min(var(--max-width), 100% - var(--px-base) * 2);
+        margin-inline: auto;
+      }
+
+      .bg-surface-color {
+        background-color: var(--surface-color);
+      }
+
+      .desktop-only {
+        display: none;
+      }
+
+      @media (width >= 80em) {
+        .container {
+          --max-width: 86rem;
+        }
+
+        .desktop-only {
+          display: initial;
+        }
+      }
+      /* --- Fim: utility.css --- */
+    </style>
   </head>
 
   <body>
     <div class="bg-surface-color">
       <nav class="container py-base flex">
         <a href="#" id="logo">
-          <img src="assets/Logo.svg" alt="Logomarca" />
+          <!-- Caminho da imagem da logomarca atualizado -->
+          <img src="assets/icons/Logo.svg" alt="Logomarca" />
         </a>
 
         <ul role="list" class="flex">
@@ -44,8 +362,9 @@
           <li class="desktop-only"><a href="#">Minhas viagens</a></li>
           <li>
             <a href="#">
+              <!-- Caminho da imagem da Isabela corrigido -->
               <img
-                src="assets/images/Profile.png"
+                src="assets/images/profile.png"
                 alt="Imagem de Isabela Torres"
               />
             </a>
@@ -56,7 +375,11 @@
       <header>
         <div class="container py-xl">
           <div id="profile">
-            <img src="assets/images/Profile.png" alt="Imagem de Isabela Torres" />
+            <!-- Caminho da imagem da Isabela corrigido -->
+            <img
+              src="assets/images/profile.png"
+              alt="Imagem de Isabela Torres"
+            />
             <div>
               <h1>Isabela Torres</h1>
               <p>
@@ -116,3 +439,4 @@
     </footer>
   </body>
 </html>
+
